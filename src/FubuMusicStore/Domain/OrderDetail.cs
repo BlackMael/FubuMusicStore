@@ -1,6 +1,8 @@
-﻿namespace FubuMusicStore.Domain
+﻿using FubuFastPack.Domain;
+
+namespace FubuMusicStore.Domain
 {
-    public class OrderDetail
+    public class OrderDetail : DomainEntity
     {
         public virtual int OrderDetailId { get; set; }
         public virtual int Quantity { get; set; }

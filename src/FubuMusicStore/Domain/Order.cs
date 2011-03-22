@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using FubuFastPack.Domain;
 
 namespace FubuMusicStore.Domain
 {
-    public class Order
+    public class Order : DomainEntity
     {
         public virtual int OrderId { get; set; }
         public virtual DateTime OrderDate { get; set; }

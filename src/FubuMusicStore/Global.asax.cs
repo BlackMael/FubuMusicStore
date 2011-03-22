@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Web.Routing;
+using FubuFastPack.Persistence;
+using FubuFastPack.StructureMap;
 using FubuMVC.Core;
 
 namespace FubuMusicStore
@@ -8,7 +11,16 @@ namespace FubuMusicStore
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            FubuApplication.For<FubuMusicStoreRegistry>();
+            FubuApplication.For<FubuMusicStoreRegistry>()
+                .ContainerFacility(() =>
+                                       {
+                                           var container = DatabaseDriver.BootstrapContainer();
+
+                                           return new TransactionalStructureMapContainerFacility(container);
+                                       })
+                .Packages(x => x.Assembly(typeof (IRepository).Assembly))
+                .Bootstrap(RouteTable.Routes);
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

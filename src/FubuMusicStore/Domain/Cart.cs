@@ -1,8 +1,9 @@
 ﻿using System;
+using FubuFastPack.Domain;
 
 namespace FubuMusicStore.Domain
 {
-    public class Cart
+    public class Cart : DomainEntity
     {
         public virtual int RecordId { get; set; }
         public virtual string CartId { get; set; }
