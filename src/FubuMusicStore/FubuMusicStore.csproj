@@ -102,6 +102,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Album.cs" />
+    <Compile Include="Domain\Artist.cs" />
+    <Compile Include="Domain\Cart.cs" />
+    <Compile Include="Domain\Genre.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderDetail.cs" />
     <Compile Include="FubuMusicStoreRegistry.asax.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -111,7 +117,6 @@
   <ItemGroup>
     <Folder Include="Actions\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Domain\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
