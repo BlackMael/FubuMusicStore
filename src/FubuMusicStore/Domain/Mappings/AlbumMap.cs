@@ -11,6 +11,8 @@ namespace FubuMusicStore.Domain.Mappings
 
             References(x => x.Artist);
             References(x => x.Genre);
+
+            HasMany(x => x.OrderDetails);
         }
     }
 

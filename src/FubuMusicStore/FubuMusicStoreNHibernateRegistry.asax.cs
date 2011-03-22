@@ -1,4 +1,5 @@
 ﻿using FubuFastPack.NHibernate;
+using FubuMusicStore.Domain.Mappings;
 
 namespace FubuMusicStore
 {
@@ -7,7 +8,7 @@ namespace FubuMusicStore
         public FubuMusicStoreNHibernateRegistry(DatabaseSettings settings)
         {
             SetProperties(settings.GetProperties());
-            MappingFromThisAssembly();
+            MappingsFromAssembly(typeof(AlbumMap).Assembly);
         }
     }
 

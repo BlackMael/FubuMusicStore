@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FubuFastPack.Domain;
 
 namespace FubuMusicStore.Domain
@@ -11,5 +12,7 @@ namespace FubuMusicStore.Domain
 
         public virtual Genre Genre { get; set; }
         public virtual Artist Artist { get; set; }
+
+        public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }
