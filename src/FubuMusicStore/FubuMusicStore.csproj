@@ -128,6 +128,7 @@
     <Compile Include="Domain\OrderDetail.cs" />
     <Compile Include="Domain\Track.cs" />
     <Compile Include="FubuMusicStoreNHibernateRegistry.asax.cs" />
+    <Compile Include="FubuMusicStoreNHibernateRegistry.cs" />
     <Compile Include="FubuMusicStoreRegistry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

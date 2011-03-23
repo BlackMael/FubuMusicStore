@@ -17,6 +17,17 @@ namespace FubuMusicStore.Domain.Mappings
         }
     }
 
+    public class GenreMap : DomainMap<Genre>
+    {
+        public GenreMap()
+        {
+            Map(x => x.GenreId);
+            Map(x => x.Name);
+            Map(x => x.Description);
+            HasMany(x => x.Albums);
+        }
+    }
+
     public class ArtistMap : DomainMap<Artist>
     {
         public ArtistMap()
