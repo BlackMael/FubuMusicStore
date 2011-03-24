@@ -15,6 +15,6 @@ namespace FubuMusicStore.Domain
         public virtual string PostalCode { get; set; }
         public virtual decimal Total { get; set; }
 
-        public virtual List<OrderDetail> OrderDetails { get; set; }
+        public virtual IList<OrderDetail> OrderDetails { get; set; }
     }
 }

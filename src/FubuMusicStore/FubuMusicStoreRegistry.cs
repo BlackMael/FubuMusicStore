@@ -3,7 +3,10 @@ using FubuFastPack.NHibernate;
 using FubuFastPack.StructureMap;
 using FubuMVC.Core;
 using FubuMVC.Core.Configuration;
+using FubuMVC.Core.Packaging;
 using FubuMVC.StructureMap;
+using NHibernate.Dialect;
+using NHibernate.Driver;
 using StructureMap;
 
 namespace FubuMusicStore
@@ -23,7 +26,13 @@ namespace FubuMusicStore
     public static class DatabaseDriver
     {
         private static IContainer _container;
+        private static DatabaseSettings _settings;
+        private static string FILE_NAME;
 
+        static DatabaseDriver()
+        {
+            FILE_NAME = FileSystem.Combine(FubuMvcPackageFacility.GetApplicationPath(), "chinook.db");
+        }
         public static void Bootstrap(bool cleanFile)
         {
             if (_container != null) return;
@@ -38,14 +47,16 @@ namespace FubuMusicStore
             return new Container(x =>
             {
                 x.AddRegistry(new FastPackRegistry());
-
-                x.For<DatabaseSettings>().Use(c =>
-                                                  {
-                                                      var settingsProvider = c.GetInstance<ISettingsProvider>();
-                                                      return settingsProvider.SettingsFor<DatabaseSettings>();
-
-                                                  });
-                x.BootstrapNHibernate<FubuMusicStoreNHibernateRegistry>(ConfigurationBehavior.UsePersistedConfigurationIfItExists);
+                _settings = new DatabaseSettings()
+                {
+                    ConnectionString = "Data Source={0};Version=3;".ToFormat(FILE_NAME),
+                    DialectType = typeof(SQLiteDialect),
+                    ProxyFactory = "NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle",
+                    ShowSql = true,
+                    DriverType = typeof(SQLite20Driver)
+                };
+                x.For<DatabaseSettings>().Use(_settings);
+                x.BootstrapNHibernate<FubuMusicStoreNHibernateRegistry>(ConfigurationBehavior.AlwaysUseNewConfiguration);
                 x.UseExplicitNHibernateTransactionBoundary();
             });
         }
