@@ -123,6 +123,7 @@
     <Compile Include="Domain\Mappings\DomainMap.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderDetail.cs" />
+    <Compile Include="Domain\Track.cs" />
     <Compile Include="FubuMusicStoreNHibernateRegistry.asax.cs" />
     <Compile Include="FubuMusicStoreRegistry.cs" />
     <Compile Include="Global.asax.cs">

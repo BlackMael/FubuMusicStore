@@ -3,7 +3,7 @@
 <% foreach (var album in Model.Albums)
 {
   %>
-  <li><%= album.Title %></li>
+  <li><%= album.Name %></li>
   <%
 } %>
 </ul>
