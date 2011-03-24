@@ -21,7 +21,6 @@ namespace FubuMusicStore
                 .Packages(x => x.Assembly(typeof (IRepository).Assembly))
                 .Bootstrap(RouteTable.Routes);
 
-            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -56,9 +56,6 @@
     <Reference Include="FubuMVC.StructureMap">
       <HintPath>..\..\lib\FubuMVC\FubuMVC.StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="HibernatingRhinos.Profiler.Appender">
-      <HintPath>..\..\..\ryans-fieldbook\lib\NHProf\HibernatingRhinos.Profiler.Appender.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\..\lib\FubuMVC\HtmlTags.dll</HintPath>
     </Reference>
