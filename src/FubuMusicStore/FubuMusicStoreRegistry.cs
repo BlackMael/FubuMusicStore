@@ -37,7 +37,6 @@ namespace FubuMusicStore
         {
             if (_container != null) return;
 
-
             _container = BootstrapContainer();
         }
 
