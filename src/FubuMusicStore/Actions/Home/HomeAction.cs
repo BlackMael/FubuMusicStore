@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using FubuFastPack.Persistence;
 using FubuMusicStore.Domain;
 using System.Linq;
 using FubuMVC.Core.View;
 
-namespace FubuMusicStore.Actions
+namespace FubuMusicStore.Actions.Home
 {
     public class HomeAction
     {
@@ -20,7 +19,8 @@ namespace FubuMusicStore.Actions
         {
 
             var topSellingAlbums = _repository.Query<Album>()
-                .Take(5)
+                .OrderByDescending(a => a.OrderDetails.Count)
+                .Take(request.Count)
                 .ToList();
 
             return new HomeViewModel(){ Albums = topSellingAlbums};
@@ -29,6 +29,12 @@ namespace FubuMusicStore.Actions
 
     public class HomeRequest
     {
+        public HomeRequest()
+        {
+            Count = 5;
+        }
+
+        public int Count { get; set; }
     }
 
     public class HomeViewModel

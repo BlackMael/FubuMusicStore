@@ -3,13 +3,13 @@ require "build_support/BuildUtils.rb"
 
 include FileTest
 require 'albacore'
-require "build_support/Tarantino.rb"
+require "build_support/sequel/rakefile.rb"
 require 'find'
 require 'net/ssh'
 require 'net/ftp'
 require 'build_support/expandtemplate.rb'
 
-Dir['build_support/*.rake'].each { |file| load(file) }
+#Dir['build_support/*.rake'].each { |file| load(file) }
 
 
 RESULTS_DIR = "results"

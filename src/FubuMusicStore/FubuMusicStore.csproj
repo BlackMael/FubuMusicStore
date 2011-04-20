@@ -104,7 +104,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Actions\HomeView.aspx" />
+    <Content Include="Actions\Home\HomeView.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -115,7 +115,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\HomeAction.cs">
+    <Compile Include="Actions\Home\HomeAction.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Domain\Album.cs" />

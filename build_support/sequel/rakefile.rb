@@ -133,7 +133,7 @@ def associate
 end
 
 desc "Create some tables"
-task :default => :create_tables do
+task :setupDb => :create_tables do
 	puts "Opening xml file"
 	open_xml
 	load_customers
