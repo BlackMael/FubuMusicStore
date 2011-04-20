@@ -1,0 +1,8 @@
+<%@ Master Language="C#" MasterPageFile="Site.Master" Inherits="FubuMusicStore.Shared.StoreMaster" %>
+<asp:Content runat="server" ID="Content" ContentPlaceHolderID="head"></asp:Content>
+<asp:Content runat="server" ID="Content1" ContentPlaceHolderID="MainContent">
+
+<asp:ContentPlaceHolder ID="LeftPane" runat="server" />
+
+<asp:ContentPlaceHolder ID="RightPane" runat="server" />
+</asp:Content>

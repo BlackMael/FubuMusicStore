@@ -1,9 +1,17 @@
-﻿using FubuCore;
+﻿using System.Linq;
+using System.Web.Routing;
+using FubuCore;
 using FubuFastPack.NHibernate;
 using FubuFastPack.StructureMap;
+using FubuMusicStore.Actions.Home;
 using FubuMVC.Core;
 using FubuMVC.Core.Configuration;
+using FubuMVC.Core.Diagnostics;
 using FubuMVC.Core.Packaging;
+using FubuMVC.Core.Registration.Conventions;
+using FubuMVC.Core.Registration.Nodes;
+using FubuMVC.Core.Registration.Routes;
+using FubuMVC.Core.Urls;
 using FubuMVC.StructureMap;
 using NHibernate.Dialect;
 using NHibernate.Driver;
@@ -18,6 +26,23 @@ namespace FubuMusicStore
             IncludeDiagnostics(true);
 
             Actions.IncludeTypesNamed(x => x.EndsWith("Action"));
+
+            Routes
+                .IgnoreNamespaceText("FubuMusicStore.Actions")
+                .IgnoreControllerNamesEntirely()
+                .IgnoreClassSuffix("Action")
+                .IgnoreMethodsNamed("Execute")
+                .IgnoreMethodSuffix("Post")
+                .IgnoreMethodSuffix("Get")
+                .IgnoreMethodSuffix("Delete")
+                .IgnoreMethodSuffix("Put")
+                .ConstrainToHttpMethod(action => action.Method.Name.Equals("Post"), "POST")
+                .ConstrainToHttpMethod(action => action.Method.Name.Equals("Put"), "PUT")
+                .ConstrainToHttpMethod(action => action.Method.Name.Equals("Get"), "GET")
+                .ConstrainToHttpMethod(action => action.Method.Name.Equals("Delete"), "DELETE");
+                //.ForInputTypesOf<IRequestById>(x => x.RouteInputFor(request => request.Id));
+            
+            Routes.HomeIs<HomeAction>(x => x.Get(null));
 
             Views.TryToAttachWithDefaultConventions();
         }
@@ -101,4 +126,6 @@ namespace FubuMusicStore
 
         
     }
+
+    
 }
