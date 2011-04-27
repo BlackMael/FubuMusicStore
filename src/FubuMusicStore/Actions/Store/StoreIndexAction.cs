@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FubuFastPack.Persistence;
 using FubuMusicStore.Domain;
 using System.Linq;
+using FubuMVC.Core;
 using FubuMVC.Core.View;
 
 namespace FubuMusicStore.Actions.Store
@@ -18,18 +19,29 @@ namespace FubuMusicStore.Actions.Store
 
         public StoreIndexViewModel Get(StoreIndexRequest request)
         {
-            return new StoreIndexViewModel(){};
+            var albums = _repository.Query<Album>()
+                .Where(x => x.Genre.Slug == request.GenreSlug)
+                .ToList();
+
+            return new StoreIndexViewModel()
+                       {
+                           Albums = albums
+                       };
         }
     }
 
     public class StoreIndexRequest
     {
+        [RouteInput]
+        public string GenreSlug { get; set; }
     }
 
     public class StoreIndexViewModel
     {
+        public virtual IEnumerable<Album> Albums { get; set; }
         
     }
 
     public class StoreIndexView : FubuPage<StoreIndexViewModel>{}
+    public class AlbumBrowseControl : FubuControl<Album>{}
 }

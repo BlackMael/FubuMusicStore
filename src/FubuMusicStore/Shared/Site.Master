@@ -6,12 +6,13 @@
 <head runat="server">
     <title></title>
     <link rel="Stylesheet" href="/content/css/reset.css" type="text/css" />
+    <link rel="Stylesheet" href="/content/css/grid.css" type="text/css" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div>
+    <div class="container_12">
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         
         </asp:ContentPlaceHolder>

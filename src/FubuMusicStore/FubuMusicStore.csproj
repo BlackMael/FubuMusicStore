@@ -105,7 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Actions\Home\HomeView.aspx" />
-    <Content Include="Actions\Partials\GenreListControl.ascx" />
+    <Content Include="Actions\Partials\GenreListPage.aspx" />
+    <Content Include="Actions\Store\AlbumBrowseControl.ascx" />
     <Content Include="Actions\Store\StoreIndexView.aspx" />
     <Content Include="Content\css\reset.css" />
     <Content Include="Global.asax" />

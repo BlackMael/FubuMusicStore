@@ -90,7 +90,7 @@ namespace FubuMusicStore.Domain.Mappings
     {
         public GenreMap()
         {
-            HasMany(x => x.Albums);
+            HasMany(x => x.Albums).KeyColumn("Genre_id");
             Map(x => x.OriginalId);
             Map(x => x.Slug);
             Map(x => x.Name);

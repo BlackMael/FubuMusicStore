@@ -20,7 +20,8 @@ namespace FubuMusicStore.Actions.Partials
         [FubuPartial]
         public GenreListModel Get(GenreListRequest request)
         {
-            return new GenreListModel() {Genres = _repository.Query<Genre>().OrderBy(x => x.Name).ToList()};
+            var genres = _repository.Query<Genre>().OrderBy(x => x.Name).ToList();
+            return new GenreListModel() {Genres = genres};
         }
     }
 
@@ -31,5 +32,5 @@ namespace FubuMusicStore.Actions.Partials
 
     public class GenreListRequest{}
 
-    public class GenreListControl : FubuControl<GenreListModel>{}
+    public class GenreListPage : FubuPage<GenreListModel>{}
 }
