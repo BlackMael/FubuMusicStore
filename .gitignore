@@ -21,3 +21,4 @@ Coverage.Log
 Specifications/*
 build_support/tmp
 *.xap
+*.swp

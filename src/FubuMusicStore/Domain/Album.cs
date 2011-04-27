@@ -10,6 +10,9 @@ namespace FubuMusicStore.Domain
         public virtual decimal Price { get; set; }
         public virtual string Slug { get; set; }
         public virtual string AlbumArtUrl { get; set; }
+        public virtual string ArtSmall { get; set; }
+        public virtual string ArtMedium { get; set; }
+        public virtual string ArtLarge { get; set; }
 
         public virtual Genre Genre { get; set; }
         public virtual Artist Artist { get; set; }

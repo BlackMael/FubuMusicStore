@@ -3,6 +3,47 @@ require "sequel"
 require "logger"
 require "uuidtools"
 require "nokogiri"
+require 'net/http'
+require 'cgi'
+
+$lastfm_key = "b25b959554ed76058ac220b7b2e0a026" 
+$lastfm_host = "ws.audioscrobbler.com"
+
+def fetch_cover(artist, album)
+	artist = CGI.escape(artist)
+	album = CGI.escape(album)
+
+	path = "/2.0/?method=album.getinfo&api_key=#{$lastfm_key}&artist=#{artist}&album=#{album}"
+	begin
+		data = Net::HTTP.get($lastfm_host, path)
+		xml = Nokogiri::Slop(data)
+		#puts xml
+		#puts xml.lfm.attributes['status'].to_s == "ok"
+
+		if xml.lfm.attributes['status'].content == 'ok' then
+			puts "Found album cover for #{artist} - #{album}"
+		#       puts "Its ok!"
+		#	puts xml.lfm.album
+			album = xml.lfm.album
+		#	puts album
+			cover = {
+				:small => album.image("[size='small']").content,
+				:medium => album.image("[size='medium']").content,
+				:big => album.image("[size='large']").content
+			}
+
+			return cover
+		end
+	rescue
+		return nil
+	end
+end
+
+desc "Test the lastfm api" 
+task :test_fm do
+	puts fetch_cover("Nickelback", "Dark Horse")
+
+end
 
 def sluggify(title)
 	title.downcase.gsub(" ","-").gsub("&","-n-").gsub("/","-").gsub(",","")	
@@ -30,17 +71,17 @@ def load_albums
 				    :Name => item.Title,
 				    :OriginalId => item.AlbumId.to_i,
 				    :Slug => sluggify(item.Title),
-				   :Artist_id => nil,
-				   :Genre_id => nil)
+				    :Artist_id => nil,
+				    :Genre_id => nil)
 
 	end
 end
 def load_artists
 	parse_key("Artist") do |item|
 		@db[:Artists].insert(:Id => UUIDTools::UUID.timestamp_create.to_s,
-				    :Name => item.Name,
-				    :OriginalId => item.ArtistId.to_i,
-				    :Slug => sluggify(item.Name))
+				     :Name => item.Name,
+				     :OriginalId => item.ArtistId.to_i,
+				     :Slug => sluggify(item.Name))
 	end
 end
 def load_genres
@@ -94,45 +135,54 @@ end
 def load_orders_details
 	parse_key("InvoiceLine") do |item|
 		@db[:OrderDetails].insert(:Id => UUIDTools::UUID.timestamp_create.to_s,
-				    :OriginalId => item.InvoiceLineId.to_i,
-				    :UnitPrice => item.UnitPrice.to_f,
-				    :Quantity => item.Quantity.to_i)
+					  :OriginalId => item.InvoiceLineId.to_i,
+					  :UnitPrice => item.UnitPrice.to_f,
+					  :Quantity => item.Quantity.to_i)
 	end
 end
 
 def associate	
 	parse_key("Track") do |item|
-	        track = @db[:Tracks][:OriginalId => item.TrackId.to_i]
+		track = @db[:Tracks][:OriginalId => item.TrackId.to_i]
 		album = @db[:Albums][:OriginalId => item.AlbumId.to_i]
 		genre = @db[:Genres][:OriginalId => item.GenreId.to_i]
 		puts "... adding #{track[:Name]} to #{album[:Name]} and setting to #{genre[:Name]}"
 
 		@db[:Tracks].where(:Id => track[:Id]).update(:Album_id => album[:Id]);
 		@db[:Albums].where(:Id => album[:Id]).update(:Genre_id => genre[:Id],:Price => 8.99);
-	    
+
 	end
 	parse_key("Album") do |item|
 
 		album = @db[:Albums][:OriginalId => item.AlbumId.to_i]
 		artist = @db[:Artists][:OriginalId => item.ArtistId.to_i]
 		puts "... setting #{album[:Name]} artist to #{artist[:Name]}"
-		@db[:Albums].where(:Id => album[:Id]).update(:Artist_id => artist[:Id]);
+
+		cover = fetch_cover(artist[:Name], album[:Name])
+
+		if cover.nil?
+			@db[:Albums].where(:Id => album[:Id]).update(:Artist_id => artist[:Id]);
+		else
+			@db[:Albums].where(:Id => album[:Id]).update(:Artist_id => artist[:Id], :ArtSmall => cover[:small], :ArtMedium => cover[:medium], :ArtLarge => cover[:big]);
+		end
+
+	       
 	end
 	parse_key("Invoice") do |item|
 		customer = @db[:Customers][:OriginalId => item.CustomerId.to_i]
 		@db[:Orders].where(:OriginalId => item.InvoiceId.to_i).update(:Customer_id => customer[:Id])
 	end
 	parse_key("InvoiceLine") do |item|
-	        track = @db[:Tracks][:OriginalId => item.TrackId.to_i]
-	        invoice = @db[:Orders][:OriginalId => item.InvoiceId.to_i]
+		track = @db[:Tracks][:OriginalId => item.TrackId.to_i]
+		invoice = @db[:Orders][:OriginalId => item.InvoiceId.to_i]
 		@db[:OrderDetails].where(:OriginalId => item.InvoiceLineId.to_i).update(:Track_id => track[:Id], :Order_id => invoice[:Id])
-	        
+
 	end
 
 
 end
 
-desc "Create some tables"
+desc "Setup the chinook database and import the data from the xml file"
 task :setupDb => :create_tables do
 	puts "Opening xml file"
 	open_xml
@@ -153,7 +203,7 @@ task :setupDb => :create_tables do
 	load_tracks
 
 	associate
-	
+
 end
 
 desc "Set up sequel"
@@ -197,6 +247,9 @@ task :create_tables => :set_up_sequel do
 		String :Name
 		String :Slug
 		Float :Price
+		String :ArtSmall
+		String :ArtMedium
+		String :ArtLarge
 		UUID :Genre_id
 		UUID :Artist_id
 	end
