@@ -108,6 +108,7 @@
     <Content Include="Actions\Partials\GenreListPage.aspx" />
     <Content Include="Actions\Store\AlbumBrowseControl.ascx" />
     <Content Include="Actions\Store\StoreIndexView.aspx" />
+    <Content Include="Content\css\grid.css" />
     <Content Include="Content\css\reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
