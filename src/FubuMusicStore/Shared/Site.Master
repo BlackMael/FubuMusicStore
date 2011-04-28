@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link rel="Stylesheet" href="/content/css/reset.css" type="text/css" />
+    <link rel="Stylesheet" href="/content/css/grid.css" type="style/css" />
     <link rel="Stylesheet" href="/content/css/grid.css" type="text/css" />
     <%=this.CSS("ui.jqgrid.css") %>
     <asp:ContentPlaceHolder ID="head" runat="server">
