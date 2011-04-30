@@ -36,6 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Bottles">
+      <HintPath>..\..\lib\FubuMVC\Bottles.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate\Castle.Core.dll</HintPath>

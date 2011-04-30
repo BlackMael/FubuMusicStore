@@ -5,6 +5,7 @@ require "uuidtools"
 require "nokogiri"
 require 'net/http'
 require 'cgi'
+require 'to_slug'
 
 $lastfm_key = "b25b959554ed76058ac220b7b2e0a026" 
 $lastfm_host = "ws.audioscrobbler.com"
@@ -17,15 +18,10 @@ def fetch_cover(artist, album)
 	begin
 		data = Net::HTTP.get($lastfm_host, path)
 		xml = Nokogiri::Slop(data)
-		#puts xml
-		#puts xml.lfm.attributes['status'].to_s == "ok"
 
 		if xml.lfm.attributes['status'].content == 'ok' then
 			puts "Found album cover for #{artist} - #{album}"
-		#       puts "Its ok!"
-		#	puts xml.lfm.album
 			album = xml.lfm.album
-		#	puts album
 			cover = {
 				:small => album.image("[size='small']").content,
 				:medium => album.image("[size='medium']").content,
@@ -37,16 +33,6 @@ def fetch_cover(artist, album)
 	rescue
 		return nil
 	end
-end
-
-desc "Test the lastfm api" 
-task :test_fm do
-	puts fetch_cover("Nickelback", "Dark Horse")
-
-end
-
-def sluggify(title)
-	title.downcase.gsub(" ","-").gsub("&","-n-").gsub("/","-").gsub(",","")	
 end
 
 def open_xml
@@ -70,7 +56,7 @@ def load_albums
 		@db[:Albums].insert(:Id => UUIDTools::UUID.timestamp_create.to_s,
 				    :Name => item.Title,
 				    :OriginalId => item.AlbumId.to_i,
-				    :Slug => sluggify(item.Title),
+				    :Slug => item.Title.to_slug,
 				    :Artist_id => nil,
 				    :Genre_id => nil)
 
@@ -81,7 +67,7 @@ def load_artists
 		@db[:Artists].insert(:Id => UUIDTools::UUID.timestamp_create.to_s,
 				     :Name => item.Name,
 				     :OriginalId => item.ArtistId.to_i,
-				     :Slug => sluggify(item.Name))
+				     :Slug => item.Name.to_slug)
 	end
 end
 def load_genres
@@ -89,7 +75,7 @@ def load_genres
 		@db[:Genres].insert(:Id => UUIDTools::UUID.timestamp_create.to_s,
 				    :Name => item.Name,
 				    :OriginalId => item.GenreId.to_i,
-				    :Slug => sluggify(item.Name))
+				    :Slug => item.Name.to_slug)
 	end
 end
 def load_tracks

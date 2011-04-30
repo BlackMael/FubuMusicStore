@@ -15,3 +15,6 @@
 
 @ECHO *** Installing Sqlite-Ruby
 @call gem install sqlite3-ruby --include-dependencies
+
+@ECHO *** Installing to_slug
+@call gem intall to_slug
