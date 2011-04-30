@@ -17,9 +17,9 @@ namespace FubuMusicStore.Actions.Home
 
         public HomeViewModel Get(HomeRequest request)
         {
-
+            
             var topSellingAlbums = _repository.Query<Album>()
-                .OrderByDescending(a => a.OrderDetails.Count)
+                .OrderByDescending(a => a.OrderDetails.Count())
                 .Take(request.Count)
                 .ToList();
 

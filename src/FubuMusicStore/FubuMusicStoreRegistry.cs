@@ -1,4 +1,5 @@
 ﻿using FubuCore;
+using FubuFastPack.JqGrid;
 using FubuFastPack.NHibernate;
 using FubuFastPack.StructureMap;
 using FubuMusicStore.Actions.Home;
@@ -37,6 +38,8 @@ namespace FubuMusicStore
             Routes.HomeIs<HomeAction>(x => x.Get(null));
 
             Views.TryToAttachWithDefaultConventions();
+
+            this.ApplySmartGridConventions(x => { x.ToThisAssembly(); });
         }
     }
 
