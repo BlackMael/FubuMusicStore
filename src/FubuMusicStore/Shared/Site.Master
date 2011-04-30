@@ -6,17 +6,39 @@
 <head runat="server">
     <title></title>
     <link rel="Stylesheet" href="/content/css/reset.css" type="text/css" />
-    <link rel="Stylesheet" href="/content/css/grid.css" type="style/css" />
     <link rel="Stylesheet" href="/content/css/grid.css" type="text/css" />
     <%=this.CSS("ui.jqgrid.css") %>
+    <link rel="Stylesheet" href="/content/css/style.css" type="text/css" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body id="home">
+    <div class="gbar"></div>
+    <div id="top">
+        <div class="container_12">
+        <!-- header area -->
+            <header>
+                <h1>FuBu Music Store</h1>
+            </header>
+        </div>
+    </div>
+    <h2 class="txt-c txt-hl font-face">So much music they'll have to pull your pants down to wipe the smile off your face!</h2>
     <div class="container_12">
+    <!-- body area -->
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         
         </asp:ContentPlaceHolder>
+		<div class="clear"></div>
+<div class="grid_12">
+	<div class="mod box bg-color3">
+		<div class="bd content bg-color4">
+			<div class="white"></div>
+			<div class="artist bg-color5"><h2 class="txt-hl">Artist Name</h2></div>
+			<div class="title"><h3>Album Title</h3></div>
+		</div>
+	</div>
+</div>
     </div>
     <%=this.WriteScriptTags() %>
     <script type="text/javascript">

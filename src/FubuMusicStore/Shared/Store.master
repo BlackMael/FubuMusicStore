@@ -2,9 +2,17 @@
 <asp:Content runat="server" ID="Content" ContentPlaceHolderID="head"></asp:Content>
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="MainContent">
 <div class="grid_4">
-<asp:ContentPlaceHolder ID="LeftPane" runat="server" />
+	<div class="mod">
+		<div class="bd">
+			<asp:ContentPlaceHolder ID="LeftPane" runat="server" />
+		</div>
+	</div>
 </div>
 <div class="grid_8">
-<asp:ContentPlaceHolder ID="RightPane" runat="server" />
+	<div class="mod">
+		<div class="bd">
+			<asp:ContentPlaceHolder ID="RightPane" runat="server" />
+		</div>
+	</div>
 </div>
 </asp:Content>

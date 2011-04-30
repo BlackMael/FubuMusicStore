@@ -23,7 +23,7 @@ time,mark,audio,video{
 }
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section{
-  display:block;
+	display:block;
 }
 body{
   line-height:1;
@@ -64,11 +64,18 @@ body {font-family: "Helvetica"  "Arial" sans-serif; font-size: 12px; color:#333;
 
 .bg-color2 { /* green */ background-color: #7ca359;}
 
+.bg-color3 {background-color: #ccc}
+
+.bg-color4{background-color:#f1f1f1;}
+
+.bg-color5 {background-color:#e3e3e3;}
+
 
 /* Typographic Elements */
 /* Colors */
 .color0 {color:#fff;}
-.color1, body, #home {color:#333;}
+.color1, body, #home {color:#666;}
+.color2 {color:#333;}
 
 /*alignment*/
 .txt-c {text-align: center;}
@@ -96,7 +103,9 @@ body {font-family: "Helvetica"  "Arial" sans-serif; font-size: 12px; color:#333;
 
 /* h tags */
 h1 {font-size: 36px;}
-h2 {font-size:28px;}
+h2.font-face {font-size:28px;}
+h2{font-size:28px; font-weight:bold;}
+title.h3{font-size:15px;}
 
 /* font colors */
 
@@ -108,7 +117,20 @@ h2 {font-size:28px;}
 
 header h1 {background: url(../images/fms-logo.png) no-repeat; height: 53px; width: 141px; text-indent: -76589473px; margin: 20px 0px;}
 
+/*structure elements*/
+.mod {margin:10px;}
 
+.bd{ padding:10px}
+
+.box {margin:10px; padding:5px; -webkit-border-radius:20px;}
+
+.box .content {padding:10px;  -webkit-border-radius:20px; border:1px solid #aaa; -webkit-box-shadow: 0px 1px 0px #fff;}
+
+.box .white {height:15px; background-color: #fff;}
+
+.box .artist {border-top:1px solid #777; border-bottom: 1px solid #777; -webkit-box-shadow:0px 1px 0px #fff;}
+
+.box .title {margin-top:5px;}
 
 
 

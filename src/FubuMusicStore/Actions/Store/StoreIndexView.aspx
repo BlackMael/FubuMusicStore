@@ -3,12 +3,11 @@
 <%@ Import Namespace="FubuMusicStore.Actions.Store" %>
 
 <asp:Content ContentPlaceHolderID="LeftPane" runat="server">
-<% this.PartialFor(new GenreListRequest()); %>
+		<% this.PartialFor(new GenreListRequest()); %>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="RightPane" runat="server">
-
-<ul ud="album-list">
-    <%= this.PartialForEach(x => x.Albums).Using<AlbumBrowseControl>() %>
-</ul>
+		<ul id="album-list">
+			<%= this.PartialForEach(x => x.Albums).Using<AlbumBrowseControl>() %>
+		</ul>
 </asp:Content>
