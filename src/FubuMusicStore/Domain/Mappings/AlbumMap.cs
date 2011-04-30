@@ -66,8 +66,8 @@ namespace FubuMusicStore.Domain.Mappings
             Map(x => x.OriginalId);
             Map(x => x.Quantity);
             Map(x => x.UnitPrice);
-
-           
+            
+            References(x => x.Track);
             References(x => x.Order);
             Table("OrderDetails");
         }

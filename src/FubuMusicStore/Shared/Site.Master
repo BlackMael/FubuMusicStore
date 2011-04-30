@@ -38,15 +38,7 @@
         
         </asp:ContentPlaceHolder>
 		<div class="clear"></div>
-<div class="grid_12">
-	<div class="mod box bg-color3">
-		<div class="bd content bg-color4">
-			<div class="white"></div>
-			<div class="artist bg-color5"><h2 class="txt-hl">Artist Name</h2></div>
-			<div class="title"><h3>Album Title</h3></div>
-		</div>
-	</div>
-</div>
+
     </div>
     
     <%=this.WriteScriptTags() %>
