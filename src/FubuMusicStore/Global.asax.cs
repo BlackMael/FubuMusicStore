@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Routing;
 using FubuFastPack.Persistence;
 using FubuFastPack.StructureMap;
+using FubuMusicStore.Domain;
+using FubuMusicStore.Membership.Services;
 using FubuMVC.Core;
+using StructureMap;
 
 namespace FubuMusicStore
 {
@@ -20,6 +24,7 @@ namespace FubuMusicStore
                                        })
                 .Packages(x => x.Assembly(typeof (IRepository).Assembly))
                 .Bootstrap(RouteTable.Routes);
+        
 
         }
 
@@ -53,4 +58,6 @@ namespace FubuMusicStore
 
         }
     }
+
+
 }

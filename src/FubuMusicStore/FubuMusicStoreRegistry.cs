@@ -1,14 +1,23 @@
-﻿using FubuCore;
+﻿using System;
+using System.Security.Principal;
+using FubuCore;
+using FubuFastPack.Crud;
 using FubuFastPack.JqGrid;
 using FubuFastPack.NHibernate;
 using FubuFastPack.StructureMap;
 using FubuMusicStore.Actions.Home;
+using FubuMusicStore.Membership.Security;
+using FubuMusicStore.Membership.Services;
 using FubuMVC.Core;
+using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Packaging;
+using FubuMVC.Core.Security;
 using FubuMVC.StructureMap;
+using FubuValidation;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using StructureMap;
+using StructureMap.Configuration.DSL;
 
 namespace FubuMusicStore
 {
@@ -36,6 +45,9 @@ namespace FubuMusicStore
                 //.ForInputTypesOf<IRequestById>(x => x.RouteInputFor(request => request.Id));
             
             Routes.HomeIs<HomeAction>(x => x.Get(null));
+
+            Policies.Add<CrudEndpointsConvention>()
+                .WrapBehaviorChainsWith<load_the_current_principal>().Ordering(x => x.MustBeBeforeAuthorization());
 
             Views.TryToAttachWithDefaultConventions();
 
@@ -66,6 +78,14 @@ namespace FubuMusicStore
             return new Container(x =>
             {
                 x.AddRegistry(new FastPackRegistry());
+                x.For(typeof(IUserService<>)).Use(typeof(UserService<>));
+                x.For<IPrincipalFactory>().Use<FubuPrincipalFactory>();
+                x.Scan(ctr =>
+                           {
+                               ctr.TheCallingAssembly();
+                               ctr.AssemblyContainingType(typeof(IValidator));
+                               ctr.WithDefaultConventions();
+                           });
                 _settings = new DatabaseSettings()
                 {
                     ConnectionString = "Data Source={0};Version=3;".ToFormat(FILE_NAME),
@@ -76,7 +96,7 @@ namespace FubuMusicStore
                 };
                 x.For<DatabaseSettings>().Use(_settings);
                 x.BootstrapNHibernate<FubuMusicStoreNHibernateRegistry>(ConfigurationBehavior.AlwaysUseNewConfiguration);
-                x.UseExplicitNHibernateTransactionBoundary();
+                x.UseOnDemandNHibernateTransactionBoundary();
             });
         }
 
@@ -122,5 +142,4 @@ namespace FubuMusicStore
         
     }
 
-    
 }

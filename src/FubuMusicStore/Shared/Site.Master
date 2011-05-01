@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="FubuMusicStore.Shared.SiteMaster" %>
+<%@ Import Namespace="FubuMusicStore.Actions.Account.LoginStatus" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -14,6 +15,12 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+  <div class="inline f-right">
+                           <div class="mainNav">
+
+                             <% this.Partial(new LoginStatusRequest()); %>
+                           </div>
+                        </div>
     <div class="container_12">
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         
