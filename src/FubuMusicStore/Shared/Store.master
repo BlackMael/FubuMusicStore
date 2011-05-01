@@ -1,16 +1,16 @@
 <%@ Master Language="C#" MasterPageFile="Site.Master" Inherits="FubuMusicStore.Shared.StoreMaster" %>
 <asp:Content runat="server" ID="Content" ContentPlaceHolderID="head"></asp:Content>
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="MainContent">
-<div class="grid_4">
-	<div class="mod">
-		<div class="bd">
+<div class="grid_3">
+	<div class="mod box bg-color3">
+		<div class="bd content bg-color4">
 			<asp:ContentPlaceHolder ID="LeftPane" runat="server" />
 		</div>
 	</div>
 </div>
-<div class="grid_8">
-	<div class="mod">
-		<div class="bd">
+<div class="grid_9">
+	<div class="mod box bg-color3">
+		<div class="bd content bg-color0">
 			<asp:ContentPlaceHolder ID="RightPane" runat="server" />
 		</div>
 	</div>

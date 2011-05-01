@@ -7,7 +7,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="RightPane" runat="server">
-		<ul id="album-list">
+		
 			<%= this.PartialForEach(x => x.Albums).Using<AlbumBrowseControl>() %>
-		</ul>
+		
 </asp:Content>

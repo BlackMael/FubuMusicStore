@@ -55,7 +55,7 @@ table{
 .clear { clear: both;}
 .hide { display: none; }
 /* Basic Styles */
-body {font-family: "Helvetica"  "Arial" sans-serif; font-size: 12px; color:#333;}
+body, a {font-family: "Helvetica"  "Arial" sans-serif; font-size: 12px; color:#333;}
 
 
 /* Background Colors */
@@ -181,13 +181,11 @@ ul.track-names-home li.select
                 max-height:288px;
                 overflow: hidden;
   background-color: #CCCCCC;
-  background-image: -moz-linear-gradient(top, #CCCCCC, #999999); /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #CCCCCC, #999999); /* IE10 */
-  background-image: -o-linear-gradient(top, #CCCCCC, #999999); /* Opera 11.10+ */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#999999)); /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #CCCCCC, #999999); /* Chrome 10+, Saf5.1+ */
-  background-image: linear-gradient(top, #CCCCCC, #999999);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#CCCCCC', EndColorStr='#999999'); /* IE6–IE9 */
+  background-image: linear-gradient(top, #CCCCCC, #999999); /* FF3.6 */
+  /* IE10 */
+  /* Opera 11.10+ */
+  /* Saf4+, Chrome */
+  /* Chrome 10+, Saf5.1+ */
 }
 
 #tracks table tr td {padding:10px 5px;}
@@ -209,3 +207,25 @@ ul.track-names-home li.select
 #tracks table tbody tr:hover {background:#eee;}
 
 
+.album-browse { display: inline-block;
+    padding: 5px;
+    vertical-align: top;
+    width: 75px;
+    margin: 10px;}
+.album-browse img { margin-left:5px; }
+.album-browse a  
+{
+       color: #666;
+ }
+.album-browse .name 
+{
+    text-align: center;
+    width: 75px; }
+ul.genres
+{
+}
+
+ul.genres li { padding: 5px; color: #333;}
+ul.genres li a { color: #333; }
+
+ul.genres li:hover { background-color: #7ca359; }
