@@ -1,10 +1,8 @@
-using System.Linq;
-using FubuFastPack.Persistence;
 using FubuMVC.Core;
 using FubuMVC.Core.View;
 using NHibernate;
 
-namespace FubuMusicStore.Actions.Album
+namespace FubuMusicStore.Actions.Albums
 {
     public class GetAlbumAction
     {

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" Inherits="FubuMusicStore.Actions.Album.GetAlbumView" MasterPageFile="~/Shared/Home.master" %>
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="FubuMusicStore.Actions.Albums.GetAlbumView" MasterPageFile="~/Shared/Home.master" %>
 
 <asp:Content ID="Main" ContentPlaceHolderID="HomeContent" runat="server">
     <div class="grid_12">

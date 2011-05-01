@@ -94,7 +94,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Actions\Album\GetAlbumView.aspx" />
+    <Content Include="Actions\Albums\GetAlbumView.aspx" />
     <Content Include="Actions\Account\ChangePassword\ChangePassword.aspx" />
     <Content Include="Actions\Account\LoginStatus\LoginStatus.aspx" />
     <Content Include="Actions\Account\Login\Login.aspx" />
@@ -138,7 +138,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\Album\GetAlbumAction.cs">
+    <Compile Include="Actions\Albums\GetAlbumAction.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Actions\Account\ChangePassword\GetChangePasswordAction.cs">
