@@ -47,12 +47,14 @@
     <Reference Include="FubuFastPack">
       <HintPath>..\..\lib\FubuMVC\FubuFastPack.dll</HintPath>
     </Reference>
+    <Reference Include="FubuLocalization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="FubuMVC.Core">
       <HintPath>..\..\lib\FubuMVC\FubuMVC.Core.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.StructureMap">
       <HintPath>..\..\lib\FubuMVC\FubuMVC.StructureMap.dll</HintPath>
     </Reference>
+    <Reference Include="FubuValidation, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="HtmlTags">
       <HintPath>..\..\lib\FubuMVC\HtmlTags.dll</HintPath>
     </Reference>
@@ -92,6 +94,10 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Actions\Account\ChangePassword\ChangePassword.aspx" />
+    <Content Include="Actions\Account\LoginStatus\LoginStatus.aspx" />
+    <Content Include="Actions\Account\Login\Login.aspx" />
+    <Content Include="Actions\api\Albums\Edit.aspx" />
     <Content Include="Actions\api\Albums\ListAlbums.aspx" />
     <Content Include="Actions\Home\HomeView.aspx" />
     <Content Include="Actions\Partials\GenreListPage.aspx" />
@@ -115,6 +121,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\Account\ChangePassword\GetChangePasswordAction.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Actions\Account\LoginStatus\LoginStatusAction.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Actions\Account\Login\GetLoginAction.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Actions\Account\Login\LoginAction.cs" />
+    <Compile Include="Actions\Account\Logoff\LogoffAction.cs" />
+    <Compile Include="Actions\api\Albums\AlbumCrudAction.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Actions\api\Albums\ListAlbumsAction.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -133,14 +153,35 @@
     <Compile Include="Domain\Genre.cs" />
     <Compile Include="Domain\Mappings\AlbumMap.cs" />
     <Compile Include="Domain\Mappings\DomainMap.cs" />
+    <Compile Include="Domain\Mappings\UserMap.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderDetail.cs" />
     <Compile Include="Domain\Track.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="FubuMusicStoreNHibernateRegistry.cs" />
     <Compile Include="FubuMusicStoreRegistry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Membership\Account\LoginService.cs" />
+    <Compile Include="Membership\Security\FubuPrincipal.cs" />
+    <Compile Include="Membership\Security\FubuPrincipalFactory.cs" />
+    <Compile Include="Membership\Security\IRole.cs" />
+    <Compile Include="Membership\Security\IUser.cs" />
+    <Compile Include="Membership\Services\IMembershipValidator.cs" />
+    <Compile Include="Membership\Services\IPasswordHelperService.cs" />
+    <Compile Include="Membership\Services\IPasswordService.cs" />
+    <Compile Include="Membership\Services\IRolesService.cs" />
+    <Compile Include="Membership\Services\IUserService.cs" />
+    <Compile Include="Membership\Services\PasswordHelperService.cs" />
+    <Compile Include="Membership\Services\PasswordService.cs" />
+    <Compile Include="Membership\Services\PasswordValidator.cs" />
+    <Compile Include="Membership\Services\RolesService.cs" />
+    <Compile Include="Membership\Services\SimpleHash.cs" />
+    <Compile Include="Membership\Services\UserService.cs" />
+    <Compile Include="Membership\Settings\LoginSettings.cs" />
+    <Compile Include="Membership\Settings\PasswordSettings.cs" />
+    <Compile Include="Membership\Settings\RegistrationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Home.master.cs">
       <DependentUpon>Home.master</DependentUpon>

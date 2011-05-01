@@ -81,6 +81,7 @@ end
 def load_tracks
 	parse_key("Track") do |item|
 		@db[:Tracks].insert(:Id => UUIDTools::UUID.timestamp_create.to_s,
+					:Name => item.Name,
 				    :Composer => item.Composer,
 				    :Milliseconds => item.Milliseconds.to_i,
 				    :Bytes => item.Bytes.to_i,
@@ -217,7 +218,15 @@ task :create_tables => :set_up_sequel do
 		String :Fax
 		String :PostalCode
 	end
-
+	@db.create_table :Users do 
+		UUID :Id
+		String :UserName
+		String :FirstName
+		String :LastName
+		String :Email
+		String :Password
+		boolean :IsLocked
+	end
 	puts "Creating artist table"
 	@db.create_table :Artists do
 		UUID :Id
