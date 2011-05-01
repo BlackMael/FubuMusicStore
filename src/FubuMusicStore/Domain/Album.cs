@@ -17,6 +17,8 @@ namespace FubuMusicStore.Domain
         public virtual Genre Genre { get; set; }
         public virtual Artist Artist { get; set; }
 
+        public virtual IList<Track> Tracks { get; set; }
+
         public virtual IList<OrderDetail> OrderDetails { get; set; }
     }
 }

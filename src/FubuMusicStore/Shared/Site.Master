@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="FubuMusicStore.Shared.SiteMaster" %>
 <%@ Import Namespace="FubuMusicStore.Actions.Account.LoginStatus" %>
+<%@ Import Namespace="FubuMusicStore.Actions.Home" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -23,7 +24,7 @@
         <div class="container_12">
         <!-- header area -->
             <header>
-                <h1>FuBu Music Store</h1>
+                <a href="<%= Urls.UrlFor(new HomeRequest()) %>"><h1>FuBu Music Store</h1></a>
             </header>
         </div>
     </div>
@@ -41,7 +42,7 @@
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         
         </asp:ContentPlaceHolder>
-
+		<div class="clear"></div>
     </div>
     
     <%=this.WriteScriptTags() %>

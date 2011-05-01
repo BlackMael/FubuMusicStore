@@ -19,7 +19,7 @@ namespace FubuMusicStore.Actions.Store
 
         public StoreIndexViewModel Get(StoreIndexRequest request)
         {
-            var albums = _repository.Query<Album>()
+            var albums = _repository.Query<Domain.Album>()
                 .Where(x => x.Genre.Slug == request.GenreSlug)
                 .ToList();
 
@@ -32,16 +32,16 @@ namespace FubuMusicStore.Actions.Store
 
     public class StoreIndexRequest
     {
-        [RouteInput]
+        [RouteInput("")]
         public string GenreSlug { get; set; }
     }
 
     public class StoreIndexViewModel
     {
-        public virtual IEnumerable<Album> Albums { get; set; }
+        public virtual IEnumerable<Domain.Album> Albums { get; set; }
         
     }
 
     public class StoreIndexView : FubuPage<StoreIndexViewModel>{}
-    public class AlbumBrowseControl : FubuControl<Album>{}
+    public class AlbumBrowseControl : FubuControl<Domain.Album>{}
 }

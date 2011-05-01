@@ -20,7 +20,7 @@ namespace FubuMusicStore.Actions.api.Albums
     {
     }
 
-    public class AlbumGrid : RepositoryGrid<Album>
+    public class AlbumGrid : RepositoryGrid<Domain.Album>
     {
         public AlbumGrid()
         {

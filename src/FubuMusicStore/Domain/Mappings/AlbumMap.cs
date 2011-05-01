@@ -7,13 +7,14 @@ namespace FubuMusicStore.Domain.Mappings
             Map(x => x.OriginalId);
             Map(x => x.Name);
             Map(x => x.Price);
-            //Map(x => x.AlbumArtUrl);
             Map(x => x.ArtSmall);
             Map(x => x.ArtMedium);
             Map(x => x.ArtLarge);
+            Map(x => x.Slug);
             References(x => x.Artist);
             References(x => x.Genre);
 
+            HasMany(x => x.Tracks);
             HasMany(x => x.OrderDetails);
             Table("Albums");
         }
@@ -25,6 +26,7 @@ namespace FubuMusicStore.Domain.Mappings
         {
             Map(x => x.Name);
             Map(x => x.OriginalId);
+            Map(x => x.Slug);
             Table("Artists");
         }
     }
@@ -85,6 +87,7 @@ namespace FubuMusicStore.Domain.Mappings
             Map(x => x.OriginalId);
             Map(x => x.UnitPrice);
             Table("Tracks");
+            
         }
     }
 
