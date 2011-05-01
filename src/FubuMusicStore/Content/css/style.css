@@ -52,6 +52,8 @@ table{
   border-spacing:0;
 }
 
+.clear { clear: both;}
+.hide { display: none; }
 /* Basic Styles */
 body {font-family: "Helvetica"  "Arial" sans-serif; font-size: 12px; color:#333;}
 
@@ -135,31 +137,75 @@ header h1 {background: url(../images/fms-logo.png) no-repeat; height: 53px; widt
 .box .title {margin-top:5px; padding-left:214px; }
 
 .box .upper {top:0px;}
+.home-box {margin:0px; padding:5px; -webkit-border-radius:20px; -moz-border-radius:20px; border-radius:20px;}
 
 .box .art {padding-left:20px; position:absolute;}
+.home-box .content {padding:0px;  -moz-border-radius:20px; border-radius:20px;  -webkit-border-radius:20px; border:1px solid #aaa; -webkit-box-shadow: 0px 1px 0px #fff;}
 
 .box .info {padding-left: 20px; padding-top:135px;}
+ul.track-names-home 
 
 .box #tracks {position:absolute; padding-left:214px; margin-top:-160px;}
+ul.track-names-home li 
 
 #tracks table {border: 1px solid #ccc; font-weight: bold; text-shadow: 0px 1px 0px #fff; color:#333;}
+}
+ul.track-names-home li:first-child
+{
+     -moz-border-radius:0px 20px 0px 0px; 
+ border-radius:0px 20px 0px 0px;  
+ -webkit-border-radius:0px 20px 0px 0px;
+}
+ul.track-names-home li:last-child
+{
+     -moz-border-radius:0px 0px 20px 0px ; 
+ border-radius:0px 0px 20px 0px;  
+ -webkit-border-radius:0px 0px 20px 0px;
+}
+ul.track-names-home li:hover  
+{
+    background-color: #7CA359;
+    color: #FFF;   
+}
 
 #tracks table tr td{border:1px solid #ccc; -webkit-box-shadow:0px 1px 0px #fff; background:#fefefe;}
+ul.track-names-home li.select  
+{
+    background-color: #BADA55;
+    color: #333;   
+}
 
 #tracks table thead tr td{background:#f9f9f9; border:none; }
+.album-covers { padding: 1px 5px; 
+                -moz-border-radius:20px 0px 0px 20px; border-radius:20px 0px 0px 20px;  -webkit-border-radius:20px 0px 0px 20px;
+                max-height:288px;
+                overflow: hidden;
+  background-color: #CCCCCC;
+  background-image: -moz-linear-gradient(top, #CCCCCC, #999999); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #CCCCCC, #999999); /* IE10 */
+  background-image: -o-linear-gradient(top, #CCCCCC, #999999); /* Opera 11.10+ */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#999999)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #CCCCCC, #999999); /* Chrome 10+, Saf5.1+ */
+  background-image: linear-gradient(top, #CCCCCC, #999999);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#CCCCCC', EndColorStr='#999999'); /* IE6–IE9 */
+}
 
 #tracks table tr td {padding:10px 5px;}
+.stripe
+{
+    background-color: #7CA359;
+    height: 265px;
+    position: absolute;
+    z-index: -1;
+    margin-top: 20px;
+    top: 178px;
+    left: 0px;
+    width: 100%;
+    
+}
 
 #tracks table tbody tr .even{background:lime;}
 
 #tracks table tbody tr:hover {background:#eee;}
-
-
-
-
-
-
-
-
 
 

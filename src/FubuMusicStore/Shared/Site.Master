@@ -10,8 +10,10 @@
     <link rel="Stylesheet" href="/content/css/grid.css" type="text/css" />
     
     <%=this.CSS("ui.jqgrid.css") %>
+    <link rel="Stylesheet" href="/content/css/overcast/jquery-ui-1.8.12.custom.css" type="text/css" />
     <link rel="Stylesheet" href="/content/css/style.css" type="text/css" />
-
+    <script type="text/javascript" src="/content/scripts/jquery-1.5.2.min.js" ></script>
+    <script type="text/javascript" src="/content/scripts/jquery-ui-1.8.12.custom.min.js" ></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -25,7 +27,9 @@
             </header>
         </div>
     </div>
+    <div class="mod">
     <h2 class="txt-c txt-hl font-face">So much music they'll have to pull your pants down to wipe the smile off your face!</h2>
+    </div>
   <div class="inline f-right">
                            <div class="mainNav">
 
@@ -37,7 +41,6 @@
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         
         </asp:ContentPlaceHolder>
-		<div class="clear"></div>
 
     </div>
     
