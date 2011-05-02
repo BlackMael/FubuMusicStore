@@ -10,12 +10,14 @@
     <title></title>
     <link rel="Stylesheet" href="/content/css/reset.css" type="text/css" />
     <link rel="Stylesheet" href="/content/css/grid.css" type="text/css" />
+    <link rel="Stylesheet" href="/content/css/jquery-ui-1.8.7.custom.css" type="text/css" />
     
     <%=this.CSS("ui.jqgrid.css") %>
-    <link rel="Stylesheet" href="/content/css/overcast/jquery-ui-1.8.12.custom.css" type="text/css" />
+
     <link rel="Stylesheet" href="/content/css/style.css" type="text/css" />
-    <script type="text/javascript" src="/content/scripts/jquery-1.5.2.min.js" ></script>
+ 	<%this.Script("jquery"); %>
     <script type="text/javascript" src="/content/scripts/jquery-ui-1.8.12.custom.min.js" ></script>
+   
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

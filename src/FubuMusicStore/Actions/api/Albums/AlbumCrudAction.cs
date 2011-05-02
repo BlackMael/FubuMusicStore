@@ -2,6 +2,7 @@ using System;
 using FubuFastPack.Crud;
 using FubuFastPack.Domain;
 using FubuMusicStore.Domain;
+using FubuMVC.Core;
 using FubuMVC.Core.View;
 
 namespace FubuMusicStore.Actions.api.Albums
@@ -12,7 +13,7 @@ namespace FubuMusicStore.Actions.api.Albums
         {
             return new EditAlbumModel(model);
         }
-
+        
         public CreationRequest<EditAlbumModel> Create(EditAlbumModel input)
         {
             throw new NotImplementedException();

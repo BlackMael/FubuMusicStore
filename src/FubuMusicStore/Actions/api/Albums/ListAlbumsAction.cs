@@ -24,7 +24,8 @@ namespace FubuMusicStore.Actions.api.Albums
     {
         public AlbumGrid()
         {
-            Show(x => x.Name);
+            this.AllowCreateNew();
+            ShowViewLink(x => x.Name);
             Show(x => x.Price);
         }
     }
