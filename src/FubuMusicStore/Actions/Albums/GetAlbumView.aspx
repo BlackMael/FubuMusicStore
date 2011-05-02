@@ -7,7 +7,7 @@
                 <div class="white">
                 </div>
                 <div class="art">
-                    <img src="<%= Model.Album.ArtLarge %>" height="174" width="174" /></div>
+                    <img src="<%= Model.Album.ArtLarge ?? "/content/images/placeholder.png" %>" height="174" width="174" /></div>
                 <div class="upper">
                     <div class="artist bg-color5">
                         <h2 class="txt-hl">

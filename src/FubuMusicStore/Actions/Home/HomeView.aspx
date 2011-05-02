@@ -1,7 +1,7 @@
 <%@ Page Inherits="FubuMusicStore.Actions.Home.HomeView" Language="C#" AutoEventWireup="true" MasterPageFile="~/Shared/Home.Master" %>
 <%@ Import Namespace="FubuMusicStore.Actions.Home" %>
 
-<asp:Content ContentPlaceHolderID="HeadContent" runat="server">
+<asp:Content ContentPlaceHolderID="scripts" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
             $('.album-covers .album').first().show();

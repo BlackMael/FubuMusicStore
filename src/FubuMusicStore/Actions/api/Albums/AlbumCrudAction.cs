@@ -1,28 +1,39 @@
 using System;
 using FubuFastPack.Crud;
 using FubuFastPack.Domain;
+using FubuFastPack.Persistence;
 using FubuMusicStore.Domain;
 using FubuMVC.Core;
+using FubuMVC.Core.Continuations;
 using FubuMVC.Core.View;
 
 namespace FubuMusicStore.Actions.api.Albums
 {
-    public class AlbumCrudAction : CrudController<Album, EditAlbumModel>
+    public class AlbumCrudAction 
     {
-        public EditAlbumModel Edit(Album model)
+        private readonly IRepository _repository;
+
+        public AlbumCrudAction(IRepository repository)
         {
-            return new EditAlbumModel(model);
+            _repository = repository;
         }
         
-        public CreationRequest<EditAlbumModel> Create(EditAlbumModel input)
-        {
-            throw new NotImplementedException();
-        }
+        [UrlForNew(typeof(Album))]
+        public EditAlbumModel Edit(EditAlbumRequest request)
+       {
+            var album = _repository.FindBy<Album>(x => x.Slug == request.Slug);
+            return new EditAlbumModel(album);
+       }
 
-        public Album New()
+        public FubuContinuation Post(Album album)
         {
-            return new Album();
+            return FubuContinuation.RedirectTo(new ListAlbumsRequest());
         }
+    }
+
+    public class EditAlbumRequest : IRequestBySlug
+    {
+        public string Slug { get; set; }
     }
 
     public class EditAlbumModel : EditEntityModel

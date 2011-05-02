@@ -16,7 +16,7 @@
 
     <link rel="Stylesheet" href="/content/css/style.css" type="text/css" />
  	<%this.Script("jquery"); %>
-    <script type="text/javascript" src="/content/scripts/jquery-ui-1.8.12.custom.min.js" ></script>
+  
    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -63,5 +63,7 @@
             }
         })(jQuery);
     </script>
+     <asp:ContentPlaceHolder ID="scripts" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>

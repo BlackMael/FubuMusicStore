@@ -1,3 +1,4 @@
+using FubuCore.Reflection;
 using FubuFastPack.JqGrid;
 using FubuMusicStore.Domain;
 using FubuMVC.Core.View;
@@ -24,8 +25,9 @@ namespace FubuMusicStore.Actions.api.Albums
     {
         public AlbumGrid()
         {
-            this.AllowCreateNew();
-            ShowViewLink(x => x.Name);
+            //this.AllowCreateNew();
+            this.AddColumn(new LinkColumn<Album>(ReflectionHelper.GetAccessor<Album>(x => x.Name),ReflectionHelper.GetAccessor<Album>(x => x.Slug),
+                                                 typeof (EditAlbumRequest)));
             Show(x => x.Price);
         }
     }

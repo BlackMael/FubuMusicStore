@@ -5,6 +5,7 @@ using FubuFastPack.Crud;
 using FubuFastPack.JqGrid;
 using FubuFastPack.NHibernate;
 using FubuFastPack.StructureMap;
+using FubuMusicStore.Actions;
 using FubuMusicStore.Actions.Home;
 using FubuMusicStore.Membership.Security;
 using FubuMusicStore.Membership.Services;
@@ -41,8 +42,8 @@ namespace FubuMusicStore
                 .ConstrainToHttpMethod(action => action.Method.Name.Equals("Post"), "POST")
                 .ConstrainToHttpMethod(action => action.Method.Name.Equals("Put"), "PUT")
                 .ConstrainToHttpMethod(action => action.Method.Name.Equals("Get"), "GET")
-                .ConstrainToHttpMethod(action => action.Method.Name.Equals("Delete"), "DELETE");
-                //.ForInputTypesOf<IRequestById>(x => x.RouteInputFor(request => request.Id));
+                .ConstrainToHttpMethod(action => action.Method.Name.Equals("Delete"), "DELETE")
+                .ForInputTypesOf<IRequestBySlug>(x => x.RouteInputFor(request => request.Slug));
             
             Routes.HomeIs<HomeAction>(x => x.Get(null));
 
