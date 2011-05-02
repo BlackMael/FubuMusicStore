@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="FubuMusicStore.Shared.SiteMaster" %>
 <%@ Import Namespace="FubuMusicStore.Actions.Account.LoginStatus" %>
 <%@ Import Namespace="FubuMusicStore.Actions.Home" %>
+<%@ Import Namespace="FubuMusicStore.Actions.Store" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -19,24 +20,31 @@
     </asp:ContentPlaceHolder>
 </head>
 <body id="home">
-    <div class="gbar"></div>
+    <div class="gbar">
+    <div class="inline f-right">
+                           <div class="login">
+
+                             <% this.Partial(new LoginStatusRequest()); %>
+                           </div>
+                        </div>
+    </div>
     <div id="top">
         <div class="container_12">
         <!-- header area -->
-            <header>
-                <a href="<%= Urls.UrlFor(new HomeRequest()) %>"><h1>FuBu Music Store</h1></a>
-            </header>
+            <div class="header">
+                <div class="grid_3"><a href="<%= Urls.UrlFor(new HomeRequest()) %>"><h1>FuBu Music Store</h1></a></div>
+                <div class="prefix_1 grid_7 suffix_1 nav-links">
+                    <a href="<%= Urls.UrlFor(new StoreIndexRequest()) %>"><h2 class="font-face color1">Store</h2></a>
+                    <a href="#"><h2 class="font-face color1">Cart</h2></a>
+                    <a href="<%= Urls.UrlFor(new StoreIndexRequest()) %>"><h2 class="font-face color1">Admin</h2></a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="mod">
     <h2 class="txt-c txt-hl font-face">So much music they'll have to pull your pants down to wipe the smile off your face!</h2>
     </div>
-  <div class="inline f-right">
-                           <div class="mainNav">
-
-                             <% this.Partial(new LoginStatusRequest()); %>
-                           </div>
-                        </div>
+  
     <div class="container_12">
     <!-- body area -->
         <asp:ContentPlaceHolder ID="MainContent" runat="server">

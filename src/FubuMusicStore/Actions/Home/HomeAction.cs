@@ -71,4 +71,6 @@ namespace FubuMusicStore.Actions.Home
     }
 
     public class HomeView : FubuPage<HomeViewModel>{}
+    public class HomeAlbumArtControl : FubuControl<Track>{}
+    public class HomeTrackNameControl: FubuControl<Track>{}
 }

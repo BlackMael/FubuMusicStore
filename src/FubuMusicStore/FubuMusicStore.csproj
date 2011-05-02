@@ -100,6 +100,8 @@
     <Content Include="Actions\Account\Login\Login.aspx" />
     <Content Include="Actions\api\Albums\Edit.aspx" />
     <Content Include="Actions\api\Albums\ListAlbums.aspx" />
+    <Content Include="Actions\Home\HomeAlbumArtControl.ascx" />
+    <Content Include="Actions\Home\HomeTrackNameControl.ascx" />
     <Content Include="Actions\Home\HomeView.aspx" />
     <Content Include="Actions\Partials\GenreListPage.aspx" />
     <Content Include="Actions\Store\AlbumBrowseControl.ascx" />
