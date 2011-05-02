@@ -1,7 +1,7 @@
 ﻿using FubuFastPack.NHibernate;
 using FubuMusicStore.Domain.Mappings;
 
-namespace FubuMusicStore
+namespace FubuMusicStore.Infrastructure
 {
     public class FubuMusicStoreNHibernateRegistry : NHibernateRegistry
     {

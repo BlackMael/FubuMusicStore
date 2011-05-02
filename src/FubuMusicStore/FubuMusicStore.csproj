@@ -175,6 +175,7 @@
     <Compile Include="Actions\Store\StoreIndexAction.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Conventions\MusicStoreHtmlConventions.cs" />
     <Compile Include="Domain\Album.cs" />
     <Compile Include="Domain\Artist.cs" />
     <Compile Include="Domain\Cart.cs" />
@@ -186,8 +187,8 @@
     <Compile Include="Domain\OrderDetail.cs" />
     <Compile Include="Domain\Track.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="FubuMusicStoreNHibernateRegistry.cs" />
-    <Compile Include="FubuMusicStoreRegistry.cs" />
+    <Compile Include="Infrastructure\FubuMusicStoreNHibernateRegistry.cs" />
+    <Compile Include="Infrastructure\FubuMusicStoreRegistry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

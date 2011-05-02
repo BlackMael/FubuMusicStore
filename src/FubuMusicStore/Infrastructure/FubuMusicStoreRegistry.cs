@@ -1,12 +1,10 @@
-﻿using System;
-using System.Security.Principal;
-using FubuCore;
-using FubuFastPack.Crud;
+﻿using FubuCore;
 using FubuFastPack.JqGrid;
 using FubuFastPack.NHibernate;
 using FubuFastPack.StructureMap;
 using FubuMusicStore.Actions;
 using FubuMusicStore.Actions.Home;
+using FubuMusicStore.Conventions;
 using FubuMusicStore.Membership.Security;
 using FubuMusicStore.Membership.Services;
 using FubuMVC.Core;
@@ -18,15 +16,16 @@ using FubuValidation;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using StructureMap;
-using StructureMap.Configuration.DSL;
 
-namespace FubuMusicStore
+namespace FubuMusicStore.Infrastructure
 {
     public class FubuMusicStoreRegistry : FubuRegistry
     {
         public FubuMusicStoreRegistry()
         {
             IncludeDiagnostics(true);
+
+            this.HtmlConvention(new MusicStoreHtmlConventions());
 
             Actions.IncludeTypesNamed(x => x.EndsWith("Action"));
 
@@ -79,6 +78,7 @@ namespace FubuMusicStore
             return new Container(x =>
             {
                 x.AddRegistry(new FastPackRegistry());
+                x.For<IObjectConverter>().Use<ObjectConverter>();
                 x.For(typeof(IUserService<>)).Use(typeof(UserService<>));
                 x.For<IPrincipalFactory>().Use<FubuPrincipalFactory>();
                 x.Scan(ctr =>
@@ -97,7 +97,7 @@ namespace FubuMusicStore
                 };
                 x.For<DatabaseSettings>().Use(_settings);
                 x.BootstrapNHibernate<FubuMusicStoreNHibernateRegistry>(ConfigurationBehavior.AlwaysUseNewConfiguration);
-                x.UseOnDemandNHibernateTransactionBoundary();
+                x.UseExplicitNHibernateTransactionBoundary();
             });
         }
 

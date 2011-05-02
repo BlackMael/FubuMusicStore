@@ -4,6 +4,7 @@ using System.Web.Routing;
 using FubuFastPack.Persistence;
 using FubuFastPack.StructureMap;
 using FubuMusicStore.Domain;
+using FubuMusicStore.Infrastructure;
 using FubuMusicStore.Membership.Services;
 using FubuMVC.Core;
 using StructureMap;

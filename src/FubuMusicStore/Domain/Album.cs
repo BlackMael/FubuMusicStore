@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using FubuFastPack.Domain;
+using FubuValidation;
 
 namespace FubuMusicStore.Domain
 {
     public class Album : DomainEntity
     {
         public virtual int OriginalId { get; set; }
+        [Required]
         public virtual string Name { get; set; }
         public virtual decimal Price { get; set; }
         public virtual string Slug { get; set; }
