@@ -47,7 +47,7 @@ namespace FubuMusicStore
             
             Routes.HomeIs<HomeAction>(x => x.Get(null));
 
-            Policies.Add<CrudEndpointsConvention>()
+            Policies
                 .WrapBehaviorChainsWith<load_the_current_principal>().Ordering(x => x.MustBeBeforeAuthorization());
 
             Views.TryToAttachWithDefaultConventions();

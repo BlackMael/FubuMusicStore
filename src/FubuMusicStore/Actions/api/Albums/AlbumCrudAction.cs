@@ -22,10 +22,10 @@ namespace FubuMusicStore.Actions.api.Albums
         public EditAlbumModel Edit(EditAlbumRequest request)
        {
             var album = _repository.FindBy<Album>(x => x.Slug == request.Slug);
-            return new EditAlbumModel(album);
+            return new EditAlbumModel{Album = album};
        }
 
-        public FubuContinuation Post(Album album)
+        public FubuContinuation Post(EditAlbumModel album)
         {
             return FubuContinuation.RedirectTo(new ListAlbumsRequest());
         }
@@ -36,14 +36,9 @@ namespace FubuMusicStore.Actions.api.Albums
         public string Slug { get; set; }
     }
 
-    public class EditAlbumModel : EditEntityModel
+    public class EditAlbumModel
     {
         public Album Album { get; set; }
-
-        public EditAlbumModel(Album target) : base(target)
-        {
-            Album = target;
-        }
     }
 
     public class Edit : FubuPage<EditAlbumModel>{}
